@@ -29,7 +29,7 @@ parser.add_argument('myfilename', nargs=1, help='filename of CSV data with "Addr
 args = parser.parse_args()
 
 # file output
-f = open(outputfile, 'a')
+f = open(outputfile, 'a', 0)
 
 if mydebug > 1:
     print("DEBUG: myfilename=" + args.myfilename[0])
