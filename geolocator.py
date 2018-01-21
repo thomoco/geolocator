@@ -6,6 +6,8 @@
 #    Google Maps Geocoding API to retrieve geolocation data as "lat, lon"
 # note: you will need an API key from:
 #    https://developers.google.com/maps/documentation/geocoding/get-api-key
+# run:
+#    ./geolocator.py -f file.csv
 
 import sys
 import argparse
@@ -15,6 +17,10 @@ from pprint import pprint
 import re
 import simplejson as json
 
+# optional debugger
+#import pdb
+#db.set_trace()
+
 # config
 mydebug = 0  # debug flag, set to taste
 # Googlemaps client key (required)
@@ -23,9 +29,9 @@ gmaps = googlemaps.Client(key='[MY-GOOGLE-API-KEY]')
 outputfile = "latlon-output.txt"
 
 # process args
-parser = argparse.ArgumentParser(description="Process filename")
-parser.add_argument('-f', help='input filename')
-parser.add_argument('myfilename', nargs=1, help='filename of CSV data with "Address,City,State,ZIP,Country" in CSV fields 1 to 5')
+parser = argparse.ArgumentParser(description='Process filename')
+parser.add_argument('-f', nargs='*', help='input filename')
+parser.add_argument('myfilename', nargs='+', help='filename of CSV data with "Address,City,State,ZIP,Country" in CSV fields 1 to 5')
 args = parser.parse_args()
 
 # file output
